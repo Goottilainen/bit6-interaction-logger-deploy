@@ -13,7 +13,6 @@ def health():
 @app.post("/process")
 def process(payload: InputPayload):
     clean_text = payload.text.strip()
-
     if not clean_text:
         raise HTTPException(status_code=400, detail="Empty input")
 
