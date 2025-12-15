@@ -1,14 +1,14 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from flask import Flask, request, jsonify
 
-app = FastAPI()
+app = Flask(__name__)
 
-class InputPayload(BaseModel):
-    text: str
+@app.route("/", methods=["POST"])
+def process():
+    data = request.get_json()
 
-@app.post("/")
-def process(payload: InputPayload):
-    t = payload.text.strip()
-    if not t:
-        raise HTTPException(status_code=400, detail="Empty input")
-    return {"result": f"Processed response: {t}"}
+    if not data or "text" not in data or not data["text"].strip():
+        return jsonify({"error": "Empty input"}), 400
+
+    return jsonify({
+        "result": f"Processed response: {data['text'].strip()}"
+    })
