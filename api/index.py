@@ -3,16 +3,20 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+
 class InputPayload(BaseModel):
     text: str
 
-@app.get("/health")
+
+@app.get("/api/health")
 def health():
     return {"status": "ok"}
 
-@app.post("/process")
+
+@app.post("/api/process")
 def process(payload: InputPayload):
     clean_text = payload.text.strip()
+
     if not clean_text:
         raise HTTPException(status_code=400, detail="Empty input")
 
