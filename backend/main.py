@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
-from database import Base, engine, SessionLocal
-from models import InteractionLog
+from .database import Base, engine, SessionLocal
+from .models import InteractionLog
 
 app = FastAPI(
     title="BIT6 Interaction Logger",
