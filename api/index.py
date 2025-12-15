@@ -3,17 +3,14 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-
 class InputPayload(BaseModel):
     text: str
 
-
-@app.get("/api/health")
+@app.get("/health")
 def health():
     return {"status": "ok"}
 
-
-@app.post("/api/process")
+@app.post("/process")
 def process(payload: InputPayload):
     clean_text = payload.text.strip()
 
