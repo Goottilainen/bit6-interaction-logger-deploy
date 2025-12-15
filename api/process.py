@@ -6,10 +6,6 @@ app = FastAPI()
 class InputPayload(BaseModel):
     text: str
 
-@app.get("/api/health")
-def health():
-    return {"status": "ok"}
-
 @app.post("/api/process")
 def process(payload: InputPayload):
     clean_text = payload.text.strip()
@@ -17,4 +13,6 @@ def process(payload: InputPayload):
     if not clean_text:
         raise HTTPException(status_code=400, detail="Empty input")
 
-    return {"result": f"Processed response: {clean_text}"}
+    return {
+        "result": f"Processed response: {clean_text}"
+    }
