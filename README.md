@@ -1,37 +1,77 @@
-# BIT6 – AI Web Application (Flask API)
+# AI Web App – BIT6 Project
 
-This project is a simple REST API built with **Flask** as part of the BIT6 module.
+This project is a simple full-stack AI web application developed for the BIT6 module.
 
-# Features
-- Health check endpoint
-- POST endpoint to process JSON data
-- REST architecture
+The application allows users to enter a text prompt through a web interface.  
+The prompt is sent to a Flask backend API, processed, stored in a PostgreSQL database, and returned as a response.
 
-# Endpoints
+---
 
-# GET /
-Returns a simple message to confirm the API is running.
+## Tech Stack
 
-# GET /health
-Returns the status of the API.
+- Frontend: HTML, CSS, JavaScript (Vite)
+- Backend: Python (Flask)
+- Database: PostgreSQL
+- API Communication: REST (JSON)
 
-# POST /process
-Accepts JSON data and returns it back as a response.
+---
 
-Example request body:
-```json
-{
-  "text": "hello world"
-}
+## Features
 
-Technologies
+- Text input from frontend
+- Backend API endpoint (`/process`)
+- Database persistence of prompts and responses
+- Timestamped records stored in PostgreSQL
 
-Python 3
+---
 
-Flask
+## Project Structure
 
-How to run locally
+bit6-ai-webapp/
+│
+├── backend/
+│ ├── app.py
+│ ├── requirements.txt
+│ ├── .env (not included)
+│
+├── frontend/
+│ ├── src/
+│ ├── index.html
+│ ├── package.json
+│
+├── README.md
+
+
+---
+
+## How to Run the Project Locally
+
+### Backend
+
+
+```bash
+cd backend
 python app.py
 
-The API will be available at:
+Backend runs on:
+
 http://127.0.0.1:5000
+
+Frontend
+cd frontend
+npm install
+npm run dev
+
+
+Frontend runs on:
+
+http://localhost:5173
+
+Database
+
+The application uses PostgreSQL to store user prompts and AI responses.
+Database credentials are managed using environment variables.
+
+Notes
+
+This project focuses on demonstrating frontend-backend communication, API handling, and database integration.
