@@ -11,15 +11,15 @@ CORS(app)
 
 
 def get_db_connection():
-    return psycopg2.connect(
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT"),
-        database=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        sslmode="require",
-        connect_timeout=5
-    )
+    database_url = os.getenv("DATABASE_URL")
+    print("DATABASE_URL AT RUNTIME:", database_url)
+
+    if not database_url:
+        raise Exception("DATABASE_URL NOT FOUND AT RUNTIME")
+
+    return psycopg2.connect(database_url)
+
+
 
 
 
