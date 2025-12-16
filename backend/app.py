@@ -17,8 +17,10 @@ def get_db_connection():
         database=os.getenv("DB_NAME"),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
-        sslmode="require"
+        sslmode="require",
+        connect_timeout=5
     )
+
 
 
 def init_db():
