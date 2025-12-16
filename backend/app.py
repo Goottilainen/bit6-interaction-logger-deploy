@@ -12,7 +12,6 @@ CORS(app)
 
 def get_db_connection():
     database_url = os.getenv("DATABASE_URL")
-    print("DATABASE_URL AT RUNTIME:", database_url)
 
     if not database_url:
         raise Exception("DATABASE_URL NOT FOUND AT RUNTIME")
@@ -38,9 +37,9 @@ def init_db():
         conn.commit()
         cur.close()
         conn.close()
-        print("✅ DB ready: table 'prompts' exists")
+        print("DB ready: table 'prompts' exists")
     except Exception as e:
-        print("⚠️ DB init failed:", e)
+        print("DB init failed:", e)
 
 
 @app.route("/", methods=["GET"])
